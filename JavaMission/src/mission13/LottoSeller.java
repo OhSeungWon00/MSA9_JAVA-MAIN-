@@ -1,4 +1,4 @@
-package mission13; // ¼öµ¿ ·Î¶Ç ¹øÈ£ ÁöÁ¤ ½Ã 1 ~ 45 °ª ÃÊ°ú ½Ã Å×½ºÆ® ÄÉÀÌ½º ¹ÌÀû¿ë, ÃßÃ·ÀÏ °è»ê¹ÌÀû¿ë
+package mission13;
 
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
@@ -15,15 +15,15 @@ public class LottoSeller {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("¸î °ÔÀÓ?");
+		System.out.println("ëª‡ ê²Œì„?");
 		int n = sc.nextInt();
-		int gamenum = 1; // °ÔÀÓ ¸î¹ø Â°?
+		int gamenum = 1; // ê²Œì„ ëª‡ë²ˆ ì§¸?
 
 		while (n > 0) {
 
-			System.out.println("[" + gamenum + "°ÔÀÓ" + "]" + " " + "(1.ÀÚµ¿ / 2.¼öµ¿)"); // °¢ ¹øÈ£ ÀÎ½ºÅÏ½º ¸¸µé¾î¼­ ÀúÀå ÇØ¾ßµÊ
+			System.out.println("[" + gamenum + "ê²Œì„" + "]" + " " + "(1.ìë™ / 2.ìˆ˜ë™)"); // ê° ë²ˆí˜¸ ì¸ìŠ¤í„´ìŠ¤ ë§Œë“¤ì–´ì„œ ì €ì¥ í•´ì•¼ë¨
 			String choose = sc.next();
-			// 1¹ø ÀÚµ¿ °í¸¦ ½Ã ¹øÈ£ ÀÚµ¿ »ı¼º¹× °´Ã¼ »ı¼º
+			// 1ë²ˆ ìë™ ê³ ë¥¼ ì‹œ ë²ˆí˜¸ ìë™ ìƒì„±ë° ê°ì²´ ìƒì„±
 			if (choose.equals("1")) {
 				int arr[] = new int[6];
 				for (int i = 0; i < arr.length; i++) {
@@ -44,7 +44,7 @@ public class LottoSeller {
 				}
 				System.out.println();
 
-				// 2¹ø °ñ¶úÀ»¶§ ¼öµ¿ ¹øÈ£ ÃßÃ· ÈÄ °´Ã¼ »ı¼º
+				// 2ë²ˆ ê³¨ëì„ë•Œ ìˆ˜ë™ ë²ˆí˜¸ ì¶”ì²¨ í›„ ê°ì²´ ìƒì„±
 			} else if (choose.equals("2")) {
 				System.out.println("1 : ");
 				int first = sc.nextInt();
@@ -59,12 +59,12 @@ public class LottoSeller {
 				System.out.println("6 : ");
 				int sixth = sc.nextInt();
 
-				lotto[count++] = new LottoMachine(first, second, third, fourth, fifth, sixth, choose); // °´Ã¼»ı¼º
+				lotto[count++] = new LottoMachine(first, second, third, fourth, fifth, sixth, choose); // ê°ì²´ìƒì„±
 
 				System.out.println(first + " " + second + " " + third + " " + fourth + " " + fifth + " " + sixth + " ");
 
 			} else {
-				System.out.println("¿Ã¹Ù¸¥ ¹øÈ£¸¦ ´­·¯ÁÖ¼¼¿ä");
+				System.out.println("ì˜¬ë°”ë¥¸ ë²ˆí˜¸ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 				continue;
 			}
 
@@ -74,38 +74,38 @@ public class LottoSeller {
 		}
 		System.out.println();
 
-		// ÇöÀç ³¯Â¥ ÁöÁ¤ ¹× ÃßÃ·ÀÏ, Áö±Ş±âÇÑ ³¯Â¥ °è»ê
+		// í˜„ì¬ ë‚ ì§œ ì§€ì • ë° ì¶”ì²¨ì¼, ì§€ê¸‰ê¸°í•œ ë‚ ì§œ ê³„ì‚°
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd(E) HH:mm:ss");
 		String now = sdf.format(cal.getTime());
 
-		// ÃßÃ·ÀÏ °è»ê -- Åä¿äÀÏ ¿ÀÈÄ 9½Ã ÀÌÀüÀÌ¸é ±× ÁÖ Åä¿äÀÏ 9½Ã·Î, ÀÌÈÄ¸é Â÷ÁÖ Åä¿äÀÏ 9½Ã·Î......... ¸ğ¸£°Ú´Ù.
+		// ì¶”ì²¨ì¼ ê³„ì‚° -- í† ìš”ì¼ ì˜¤í›„ 9ì‹œ ì´ì „ì´ë©´ ê·¸ ì£¼ í† ìš”ì¼ 9ì‹œë¡œ, ì´í›„ë©´ ì°¨ì£¼ í† ìš”ì¼ 9ì‹œë¡œ......... ëª¨ë¥´ê² ë‹¤.
 
-		// Áö±Ş±âÇÑ °è»ê -- 1³âÇÏ°í 1ÀÏ ´õÇÑ ³¯Â¥
+		// ì§€ê¸‰ê¸°í•œ ê³„ì‚° -- 1ë…„í•˜ê³  1ì¼ ë”í•œ ë‚ ì§œ
 		cal.add(Calendar.DAY_OF_MONTH, 1);
 		cal.add(Calendar.YEAR, 1);
 		String untilday = sdf.format(cal.getTime());
 
-		System.out.println("############ ÀÎ»ı¿ªÀü Lottoria #######################");
-		System.out.println("¹ßÇàÀÏ :   \t" + now);
-		System.out.println("ÃßÃ·ÀÏ :   \t" + now); // ¾ÆÁ÷
-		System.out.println("Áö±Ş±âÇÑ :  \t" + untilday);
+		System.out.println("############ ì¸ìƒì—­ì „ Lottoria #######################");
+		System.out.println("ë°œí–‰ì¼ :   \t" + now);
+		System.out.println("ì¶”ì²¨ì¼ :   \t" + now); // ì•„ì§
+		System.out.println("ì§€ê¸‰ê¸°í•œ :  \t" + untilday);
 		System.out.println("--------------------------------------------------");
 
-		// ¼ıÀÚ ÇÑÀÚ¸®¸é ¾Õ¿¡ 0 ºÙÀÌ±â ex) 1 --> 01 ¹ÌÀû¿ë.
+		// ìˆ«ì í•œìë¦¬ë©´ ì•ì— 0 ë¶™ì´ê¸° ex) 1 --> 01 ë¯¸ì ìš©.
 		for (int i = 0; i < count; i++) {
-			System.out.println((i + 1) + " " + (lotto[i].choose.equals("1") ? "ÀÚ   µ¿\t" : "¼ö   µ¿\t") + lotto[i].first
+			System.out.println((i + 1) + " " + (lotto[i].choose.equals("1") ? "ì   ë™\t" : "ìˆ˜   ë™\t") + lotto[i].first
 					+ "\t" + lotto[i].second + "\t" + lotto[i].third + "\t" + lotto[i].fourth + "\t" + lotto[i].fifth
 					+ "\t" + lotto[i].sixth);
 
 		}
 		System.out.println("--------------------------------------------------");
-		System.out.println("±İ¾× \t\t\t\t" + count * 1000 + "¿ø");
+		System.out.println("ê¸ˆì•¡ \t\t\t\t" + count * 1000 + "ì›");
 		System.out.println("####################################################");
 		System.out.println();
 		System.out.println();
 
-		// ´çÃ· ¹øÈ£ ÁöÁ¤
+		// ë‹¹ì²¨ ë²ˆí˜¸ ì§€ì •
 
 		int arr[] = new int[6];
 		for (int i = 0; i < arr.length; i++) {
@@ -118,17 +118,17 @@ public class LottoSeller {
 			}
 
 		}
-		// º¸³Ê½º ¹øÈ£ ÁöÁ¤
-		System.out.print("´çÃ· ¹øÈ£ : ");
+		// ë³´ë„ˆìŠ¤ ë²ˆí˜¸ ì§€ì •
+		System.out.print("ë‹¹ì²¨ ë²ˆí˜¸ : ");
 		for (int i : arr) {
 			System.out.print(i + "  ");
 		}
 		System.out.println();
 		int bonus = (int) (Math.random() * 45 + 1);
-		System.out.println("º¸³Ê½º ¹øÈ£ : " + bonus);
+		System.out.println("ë³´ë„ˆìŠ¤ ë²ˆí˜¸ : " + bonus);
 		System.out.println();
 
-		// ´çÃ· °á°ú Á¶È¸.
+		// ë‹¹ì²¨ ê²°ê³¼ ì¡°íšŒ.
 		int result = 0;
 		String arr2[] = new String[count];
 		for (int i = 0; i < count; i++) {
@@ -152,22 +152,22 @@ public class LottoSeller {
 			}
 
 			if (result == 6) {
-				arr2[i] = "1µî";
+				arr2[i] = "1ë“±";
 			} else if (result == 5) {
-				arr2[i] = "3µî";
+				arr2[i] = "3ë“±";
 			} else if (result == 4) {
-				arr2[i] = "4µî";
+				arr2[i] = "4ë“±";
 			} else if (result == 3) {
-				arr2[i] = "5µî";
+				arr2[i] = "5ë“±";
 			} else {
-				arr2[i] = "³«Ã·";
+				arr2[i] = "ë‚™ì²¨";
 			}
 			result = 0;
 		}
 
-		System.out.println("################## ´çÃ·°á°ú# #########################");
+		System.out.println("################## ë‹¹ì²¨ê²°ê³¼# #########################");
 		for (int i = 0; i < count; i++) {
-			System.out.println((i + 1) + " " + (lotto[i].choose.equals("1") ? "ÀÚ   µ¿\t" : "¼ö   µ¿\t") + lotto[i].first
+			System.out.println((i + 1) + " " + (lotto[i].choose.equals("1") ? "ì   ë™\t" : "ìˆ˜   ë™\t") + lotto[i].first
 					+ "\t" + lotto[i].second + "\t" + lotto[i].third + "\t" + lotto[i].fourth + "\t" + lotto[i].fifth
 					+ "\t" + lotto[i].sixth + "\t" + "(" + arr2[i] + ")");
 		}
